@@ -19,15 +19,16 @@ import java.util.TimerTask;
 public class SplashActivity extends AppCompatActivity {
 
 
-    final String path = "http://10.149.182.68:8080/img/bg2.jpg";
+    final String path = "http://10.134.141.194:8080/img/bg2.jpg";
 
     private int skipTime = 5;
+
+    private Runnable runnable = null;
 
     /**
      * 实现界面更新
      */
     private Handler handler = new Handler(){
-
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
@@ -45,8 +46,6 @@ public class SplashActivity extends AppCompatActivity {
         }
     };
 
-
-    private Handler handler1 = new Handler();
 
     private Timer timer = new Timer(true);
 
@@ -69,7 +68,8 @@ public class SplashActivity extends AppCompatActivity {
         /**
          * 实现延时跳转
          */
-        handler1.postDelayed(new Runnable() {
+
+        handler.postDelayed(runnable = new Runnable() {
             @Override
             public void run() {
                 Intent i = new Intent(SplashActivity.this, MainActivity.class);
@@ -87,9 +87,9 @@ public class SplashActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(SplashActivity.this,MainActivity.class));
                 finish();
-                timer.cancel();
             }
         });
+
 
         /**
          * 计时器配合handler实现跳转和界面更新
@@ -98,11 +98,19 @@ public class SplashActivity extends AppCompatActivity {
              @Override
              public void run() {
                  skipTime -- ;
-                 handler.sendEmptyMessage(skipTime == 0 ? 1 : 0 );
+                 handler.sendEmptyMessage( 0 );
              }
          },1000,1000);
 
     }
 
+
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacks(runnable);
+        handler.removeCallbacksAndMessages(null);
+        timer.cancel();
+        super.onDestroy();
+    }
 }
 
