@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <com.Utils.MyImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/skip"
+        android:layout_width="360px"
+        android:layout_height="80px"
+        android:layout_marginLeft="700px"
+        android:layout_marginTop="20px"
+        android:textSize="20dp"
+        android:text="点击跳过"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        />
+
+
+
+</FrameLayout>
