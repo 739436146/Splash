@@ -1,6 +1,5 @@
 package com.helloworld;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -21,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
 
     final String path = "http://10.134.141.194:8080/img/bg2.jpg";
 
-    private int skipTime = 5;
+    private int skipTime = 6;
 
     private Runnable runnable = null;
 
@@ -33,12 +32,11 @@ public class SplashActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0:{
-                    skip.setText("点击跳过 "+skipTime);
+                    skip.setText("点击跳过  "+skipTime);
                     break;
                 }
                 case 1:{
-                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(i);
+                    MainActivity.startAction(SplashActivity.this,null);
                     SplashActivity.this.finish();
                 }
             }
@@ -62,7 +60,7 @@ public class SplashActivity extends AppCompatActivity {
 
         skip = findViewById(R.id.skip);
 
-        MyImageView myImageView = findViewById(R.id.background);
+        MyImageView myImageView = findViewById(R.id.splashimg);
         myImageView.setImageURL(path);
 
         /**
@@ -72,8 +70,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(runnable = new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
+                MainActivity.startAction(SplashActivity.this,null);
                 SplashActivity.this.finish();
             }
         },5000);
@@ -85,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                MainActivity.startAction(SplashActivity.this,null);
                 finish();
             }
         });

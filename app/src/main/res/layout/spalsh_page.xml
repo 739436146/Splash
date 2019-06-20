@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/bg"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
 
 
     <com.Utils.MyImageView
-        android:id="@+id/background"
+        android:id="@+id/splashimg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:src="@drawable/sign"
+        android:contentDescription="design" />
 
     <TextView
-        android:id="@+id/skip"
-        android:layout_width="360px"
-        android:layout_height="80px"
-        android:layout_marginLeft="700px"
-        android:layout_marginTop="20px"
-        android:textSize="20dp"
-        android:text="@string/skip"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="bottom|center"
+        android:text="@string/reservedmsg" />
+</LinearLayout>
 
-
-
+<TextView
+    android:id="@+id/skip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right|top"
+    android:background="#00000000"
+    android:text="点击跳过  5"
+    android:textColor="#ffffff"
+    android:textSize="18sp" />
 </FrameLayout>
